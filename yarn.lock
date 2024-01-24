@@ -7851,17 +7851,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@onsol/tldparser@npm:^0.3.3":
-  version: 0.3.7
-  resolution: "@onsol/tldparser@npm:0.3.7"
+"@onsol/tldparser@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "@onsol/tldparser@npm:0.6.1"
   dependencies:
-    "@solana/buffer-layout": "npm:^4.0.0"
-    "@solana/web3.js": "npm:^1.66.0"
-    bigint-buffer: "npm:^1.1.5"
-    bn.js: "npm:^5.2.0"
-    borsh: "npm:^0.7.0"
-    buffer: "npm:6.0.1"
-  checksum: a14fb42df96d9a158ed6152c1e65158e4a6af8f4bc48b15ffd64149a4c127df7cca8f612ae87f4e1ed313632e6d829c826e0653988ab982f33cbfde709ab8822
+    "@ethersproject/sha2": "npm:^5.7.0"
+    "@metaplex-foundation/beet-solana": "npm:^0.4.0"
+  peerDependencies:
+    "@solana/web3.js": ^1.67.0
+    bn.js: ^5.2.1
+    borsh: ^0.7.0
+    buffer: 6.0.1
+  checksum: 7b86d6547da4f7f4149912fed1bcebc1010692fbcca08cd3cdf708e9b1da37b18ae4bf9a8d581f98f186adfcdbafd4e51d5c8205865e906eeca05eb2ec6f5e17
   languageName: node
   linkType: hard
 
@@ -16158,7 +16159,7 @@ __metadata:
   resolution: "backpack@workspace:."
   dependencies:
     "@manypkg/cli": "npm:^0.21.1"
-    "@onsol/tldparser": "npm:^0.3.3"
+    "@onsol/tldparser": "npm:^0.6.1"
     airtable: "npm:^0.12.2"
     buffer: "npm:^5.5.0"
     check-dependency-version-consistency: "npm:^3.0.3"
