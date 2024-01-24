@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { resolve } from "@bonfida/spl-name-service";
 import { Blockchain } from "@coral-xyz/common";
+import { TldParser } from "@onsol/tldparser";
 import type { Connection } from "@solana/web3.js";
 import { PublicKey, SystemProgram } from "@solana/web3.js";
 import { ethers } from "ethers";
@@ -85,6 +86,32 @@ export async function validateAddress(
     if (address.endsWith(".sol")) {
       try {
         pubkey = await resolve(solanaConnection, address);
+      } catch (e) {
+        return {
+          isValidAddress: false,
+          isFreshAddress: false,
+          isErrorAddress: true,
+          normalizedAddress: "",
+        };
+      }
+    }
+
+    // All Domains by ONSOL
+    if (!pubkey && address.split(".").length === 2) {
+      try {
+        // address would be e.g. miester.poor
+        const parser = new TldParser(solanaConnection);
+        const owner = await parser.getOwnerFromDomainTld(address);
+        if (!owner) {
+          // Not a valid domain don't bother continuing since it has a dot in it.
+          return {
+            isValidAddress: false,
+            isFreshAddress: false,
+            isErrorAddress: true,
+            normalizedAddress: "",
+          };
+        }
+        pubkey = owner;
       } catch (e) {
         return {
           isValidAddress: false,
