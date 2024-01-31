@@ -70,7 +70,6 @@
     "yarn": "^4.0.0"
   },
   "dependencies": {
-    "@onsol/tldparser": "^0.6.1",
     "patch-package": "^6.5.0"
   }
 }
